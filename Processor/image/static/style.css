@@ -1,0 +1,51 @@
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+
+
+.main .sidebar{
+    border: 2px solid black;
+    background-color: grey;
+    height: 900px;
+    width: 350px;
+}
+.main .sidebar .upload{
+background-color: grey;
+text-align: center;
+    width: 100%;
+}
+.upload h2{
+    color: black;
+    font-weight: bold;
+
+    
+}
+.main .sidebar .logo{
+    text-align: center;
+    padding: 50px 50px;
+    border: 2px solid white;
+
+}
+.logo h1{
+    color: white;
+    font-weight: bold;
+}
+.main .output{
+    width: 100%;
+    text-align: center;
+    background-color: black;
+}
+.main .output h1{
+    color: white;
+}
+
+.main .output .image{
+   background-color: #1f1e1e;
+   border-radius: 50px;
+   margin: 50px 50px;
+   padding: 50px 50px;
+}

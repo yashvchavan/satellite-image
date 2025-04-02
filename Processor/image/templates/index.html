@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Satellite Image Analyser</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="logo">
+
+                <h1>Satellite Image Analyser</h1>
+            </div>
+            <div class="upload">
+                <h2>Upload  Image here</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <h2>Select output Image :</h2>
+                    <select name="imagess" id="Images">
+                        <option value="Vegitation">Vegitation</option>
+                        <option value="water">Water Bodies</option>
+                        
+                    </select>
+                    <hr>
+                    <button onclick="getSelectedValue()">Submit</button>
+                    <!--<input type="submit" id="submit" value="Submit">-->
+                </form>
+            
+            </div>
+
+        </div>
+        <div class="output">
+
+                <h1>
+                    Output image
+                </h1>
+                <div class="image">
+                    {% if plot %}
+                    <h2>Generated Plot:</h2>
+                    <div class="veg"><img src="{{ plot.image.url }}" alt="Generated Plot" height="70%" width="70%"></div>
+                    
+                    <div class="wat"><img src="{{ water.image.url }}" alt="Generated Plot" height="70%" width="70%"></div>
+                    {% endif %}
+                </div>
+
+        </div>
+
+
+
+
+    </div>
+    
+</body>
+<script >
+     function getSelectedValue() {
+            const dropdown = document.getElementById('Images');
+            const value = dropdown.value;
+
+            const vegDiv = document.querySelector('.veg');
+            const watDiv = document.querySelector('.wat');
+
+            // Hide both images initially
+            vegDiv.style.display = 'none';
+            watDiv.style.display = 'none';
+
+            // Show the relevant image based on the dropdown value
+            if (value === 'Vegitation') {
+                vegDiv.style.display = 'block';
+            } else if (value === 'water') {
+                watDiv.style.display = 'block';
+            }
+        }
+
+
+
+</script>
+</html>
